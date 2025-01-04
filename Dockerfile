@@ -1,10 +1,10 @@
-FROM golang:1.22-bullseye as permset
+FROM docker.io/golang:1.22-bullseye as permset
 WORKDIR /src
 RUN git clone https://github.com/jacobalberty/permset.git /src && \
     mkdir -p /out && \
     go build -ldflags "-X main.chownDir=/unifi" -o /out/permset
 
-FROM ubuntu:20.04
+FROM docker.io/ubuntu:20.04
 
 LABEL maintainer="Jacob Alberty <jacob.alberty@foundigital.com>"
 
